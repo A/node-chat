@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  include blocks/header
+  h2 Пользователь
+
+  ul.users-list
+    li
+      img(src=(user.photo)?'#{user.photo}':'/img/avatar.jpg')
+      form(action='/admin/users/#{user._id}' method='post')
+        .description
+          .nickname
+            span.field Ник:
+            input(placeholder='—' name='nickname' value='#{user.nickname}')
+          .phone
+            span.field Телефон:
+            input(placeholder='—' name='phone' value='#{user.phone}')
+          .balance
+            span.field Монеты:
+            input(placeholder='—' name='balance' value='#{user.balance}')
+          .gender
+            span.field Пол:
+              select(id='gender' name='gender')
+                if user.gender == 1
+                  option(value="0") Мужской
+                  option(value="1" selected) Женский
+                else
+                  option(value="0" selected) Мужской
+                  option(value="1") Женский
+          .dob
+            span.field Дата рождения:
+            span.value= moment(user.dob).lang('ru').format('Do MMMM YYYY') + ' года'
+          .create_at
+            span.field Зарегистрирован:
+            span.value= moment(user.create_at).lang('ru').format('LLLL')
+          br
+          a.edit(href='/admin/users/') назад
+          span   
+          button(type='submit') Сохранить

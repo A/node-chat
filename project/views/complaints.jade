@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  include blocks/header
+  h2 Жалобы
+
+  input(type='search' placeholder='Поиск')
+
+  ul
+    li
+      a(href='/admin/users/userid') Сomplaint #1
+    li
+      a Сomplaint #2
+    li
+      a Сomplaint #3
+    li
+      a Сomplaint #4

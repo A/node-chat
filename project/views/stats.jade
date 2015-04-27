@@ -1,0 +1,22 @@
+extends layout
+
+block content
+
+  include blocks/header
+  h2 Статистики
+
+  ul
+    li
+      .description
+        .users
+          span.field Пользователей:
+          span.value= users
+        .activeUsers
+          span.field Активных пользователей за последние 30 минут:
+          span.value= activeUsers
+        .rooms
+          span.field Комнат:
+          span.value= rooms
+        .rooms
+          span.field Подаренных подарков:
+          span.value= gifts

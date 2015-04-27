@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  include blocks/header
+  h2 Новый подарок
+
+  ul.gifts-list
+    li
+      image.image(src="#{gift.image}")
+      form(action='/admin/gifts/#{gift._id}/edit' enctype="multipart/form-data" method='post')
+        .description
+          .name
+            span.field Название:
+            input(placeholder='—' name="name" value='#{gift.name}')
+          .price
+            span.field Цена:
+            input(placeholder='—' name="price" value='#{gift.price}')
+          .img
+            span.field Изображение:
+            input(name="img" type='file')
+          a.edit(href='/admin/gifts/') назад
+          span   
+          button(type='submit') Сохранить

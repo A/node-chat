@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  include blocks/header
+  h2 Пользователи
+
+  form(action='/admin/users/')
+    input(name='search' type='search' placeholder='Поиск')
+    button(type='submit' hidden)
+
+  br
+  .description
+    span.field Всего пользователей:
+    span.value= count
+  .description
+    span.field Страницы
+    span.value= page
+    span.value  из 
+    span.value= pages
+  .pagination
+    if (page-1)
+      a(href='/admin/users/?page=#{page-1}') < предыдущая страница
+    else
+      span Предыдущая страница
+    span  || 
+    if (page < pages)
+      a(href='/admin/users/?page=#{page+1}') следующая страница >
+    else
+      span Следующая страница
+  ul.users-list
+    - each user in users
+      li
+        include blocks/user-cart

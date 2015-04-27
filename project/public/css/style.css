@@ -1,0 +1,58 @@
+body {
+  margin-left: 64px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul ul { /* Вложенные списки */
+  margin-left: 32px;
+}
+
+ul li {
+  margin: 32px 0;
+  list-style-type: none;
+}
+
+ul.users-list li img {
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  float: left;
+}
+
+ul.gifts-list li .image {
+  width: 128px;
+  height: 128px;
+  float: left;
+}
+
+ul.users-list li .description {
+  padding-left: 80px;
+}
+
+ul.gifts-list li .description {
+  padding-left: 160px;
+}
+
+.description .field {
+  font-style: italic;
+  color: gray;
+  margin-right: 8px;
+}
+
+.description .edit {
+  color: #00C;
+  font-size: 14px;
+}
+
+.clear {
+  clear: both;
+}

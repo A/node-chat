@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  include blocks/header
+  h2 Комнаты
+
+  input(type='search' placeholder='Поиск')
+
+  ul.room-list
+    - each room in rooms
+      li
+        div.description
+          h3= room.name
+          div.nickname 
+            span.field Название:
+            span.value= room.name || '—'
+          div.max_users 
+            span.field Максимум пользователей:
+            span.value= room.max_users || '—'
+          div.max_users 
+            span.field Приватная:
+            span.value= (room.password) ? 'да' : 'нет'
+          div.admin
+            span.field Администратор:
+            .nickname
+              span.field — Ник:
+              span.value
+                a(href='/admin/users?search=#{room.admin.phone}')= (room.admin.nickname) || '—'
+            .phone
+              span.field — Телефон:
+              span.value
+                a(href='/admin/users?search=#{room.admin.phone}')= (room.admin.phone) || '—'
+            form(action='/admin/rooms/#{room._id}' method='post')
+              span.field — Сменить администратора:
+              input(name='admin' placeholder='телефон')
+              input(type='submit')
+          div.users
+            span.field Пользователи: 
+            span.value= room.users.length
+          div.create_at
+            span.field Создана:
+            span.value= moment(room.create_at).lang('ru').format('LLLL')
+          a.edit(href='/admin/rooms/#{room._id}/delete') Удалить
+          br

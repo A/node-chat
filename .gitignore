@@ -1,0 +1,6 @@
+project/node_modules
+project/public/uploads/*
+resource/*
+.DS_Store
+db
+.vagrant

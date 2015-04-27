@@ -1,0 +1,23 @@
+img(src=(user.photo)?'#{user.photo}':'/img/avatar.jpg')
+div.description
+  div.nickname 
+    span.field Ник:
+    span.value= user.nickname || '—'
+  div.phone
+    span.field Телефон:
+    span.value= user.phone || '—'
+  div.balance
+    span.field Монеты:
+    span.value= user.balance || '—'
+  div.gender
+    span.field Пол:
+    span.value= ('undefined' === typeof user.gender)?'—':(user.gender)?'Женщина':'Мужчина'
+  div.dob
+    span.field Дата рождения:
+    span.value= moment(user.dob).lang('ru').format('Do MMMM YYYY') + ' года'
+  div.create_at
+    span.field Зарегистрирован:
+    span.value= moment(user.create_at).lang('ru').format('LLLL')
+  a.edit(href='/admin/users/#{user._id}') редактировать
+  br
+  a.edit(href='/admin/users/#{user._id}/delete') удалить

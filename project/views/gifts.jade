@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  include blocks/header
+  h2 Подарки
+
+  form(action='/admin/gifts/')
+    input(name='search' type='search' placeholder='Поиск')
+    button(type='submit' hidden)
+
+  br
+  .description
+    a.edit(href="/admin/gifts/new") Новый подарок
+
+
+  ul.gifts-list
+    - each gift in gifts
+      li
+        image.image(src="#{gift.image}")
+        .description
+          .name
+            span.field Название:
+            span.value= gift.name
+          .price
+            span.field Цена:
+            span.value= gift.price
+          .create_at
+            span.field Создан:
+            span.value= moment(gift.create_at).lang('ru').format('LLLL')
+          a.edit(href="/admin/gifts/#{gift._id}/edit") редактировать
+          br
+          a.edit(href="/admin/gifts/#{gift._id}/remove") удалить
+        .clear
